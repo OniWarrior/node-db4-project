@@ -6,7 +6,7 @@ async function find() {
     const retrieval = await db("recipes as recs")
     .leftJoin("steps as st", "recs.recipe_id", "st.recipe_id")
     .leftJoin("ingredients as ings",'recs.recipe_id','ings.recipe_id')
-    .select("recs.recipe_id", "recs.recipe_name", "st.*","ings.*")    
+    .select("recs.recipe_id", "recs.recipe_name","recs.created_at", "st.*","ings.*")    
     .orderBy("st.step_number", "asc")
 
   const format = []
